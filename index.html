@@ -44,6 +44,13 @@
     ul{margin:10px 0 0; color:var(--muted); line-height:1.6}
     footer{margin-top:28px;color:var(--muted);font-size:13px}
     @media (max-width: 900px){ .grid{grid-template-columns:1fr} nav{justify-content:flex-start} }
+    @media print{
+      body{background:#fff;color:#000}
+      .card,.item{background:#fff;border:1px solid #ddd}
+      a{color:#000;text-decoration:none}
+      nav,.cta{display:none}
+      .wrap{padding:0}
+    }
   </style>
 </head>
 <body>
@@ -52,10 +59,11 @@
       <div>
         <div class="name">YOUR NAME</div>
         <div class="chips" style="margin-top:10px">
-          <span class="chip">Montréal, QC</span>
+          <span class="chip">City, Country</span>
           <span class="chip">Email: you@email.com</span>
           <span class="chip">Phone: +1 (000) 000-0000</span>
           <span class="chip"><a href="#" aria-label="LinkedIn">LinkedIn</a></span>
+          <span class="chip"><a href="#" aria-label="Portfolio">Portfolio</a></span>
         </div>
       </div>
 
@@ -64,6 +72,7 @@
         <a class="pill" href="#skills">Skills</a>
         <a class="pill" href="#experience">Experience</a>
         <a class="pill" href="#education">Education</a>
+        <a class="pill" href="#projects">Projects</a>
         <a class="pill" href="#contact">Contact</a>
       </nav>
     </header>
@@ -73,11 +82,13 @@
         <div class="slogan">👋 Get to know me</div>
         <h1>Target Role / Professional Title</h1>
         <p>
-          2–4 lines summary from your CV: years of experience, industries, leadership scope, and the value you deliver.
+          2–4 lines summary from your CV: your years of experience, industries, leadership scope,
+          and the value you deliver (process, strategy, operations, transformation, etc.).
         </p>
 
         <div class="cta">
           <a class="btn primary" href="resume.pdf" download>⬇️ Download CV (PDF)</a>
+          <button class="btn" type="button" onclick="window.print()">🖨️ Print / Save as PDF</button>
           <a class="btn" href="#contact">✉️ Contact</a>
         </div>
       </section>
@@ -86,19 +97,40 @@
         <div class="card" id="about">
           <h2>About</h2>
           <p>
-            Short recruiter-friendly paragraph about what you’re known for and what you’re looking for next.
+            A more personal, recruiter-friendly paragraph: what you’re known for, what motivates you,
+            and the type of problems you like solving. Keep it authentic and specific.
           </p>
         </div>
 
-        <div class="card" id="skills">
-          <h2>Skills</h2>
-          <div class="chips">
-            <span class="chip">Leadership</span>
-            <span class="chip">Operations</span>
-            <span class="chip">Project Management</span>
-            <span class="chip">Change Management</span>
-            <span class="chip">Process Improvement</span>
+        <div class="card">
+          <h2>Highlights</h2>
+          <div class="list">
+            <div class="item">
+              <div class="top"><div class="role">Achievement #1</div><div class="meta">Metric • Year</div></div>
+              <p>Example: Reduced cycle time by X% / led Y people / managed $Z budget.</p>
+            </div>
+            <div class="item">
+              <div class="top"><div class="role">Achievement #2</div><div class="meta">Metric • Year</div></div>
+              <p>Example: Delivered program across stakeholders / improved service / increased productivity.</p>
+            </div>
           </div>
+        </div>
+      </section>
+
+      <section class="card" id="skills" style="margin-top:14px">
+        <h2>Skills</h2>
+        <div class="chips">
+          <span class="chip">Leadership</span>
+          <span class="chip">Stakeholder management</span>
+          <span class="chip">Operations</span>
+          <span class="chip">Project / Program management</span>
+          <span class="chip">Change management</span>
+          <span class="chip">Process improvement</span>
+          <span class="chip">Data & reporting</span>
+        </div>
+        <div class="chips" style="margin-top:10px">
+          <span class="chip">Tools: (from your CV)</span>
+          <span class="chip">Languages: (from your CV)</span>
         </div>
       </section>
 
@@ -108,12 +140,23 @@
           <article class="item">
             <div class="top">
               <div class="role">Job Title — Company</div>
-              <div class="meta">YYYY–YYYY</div>
+              <div class="meta">City • YYYY–YYYY</div>
             </div>
             <ul>
-              <li>Impact bullet with measurable results.</li>
-              <li>Impact bullet with scope (team/budget/portfolio).</li>
-              <li>Impact bullet about outcomes (cost/time/quality/client).</li>
+              <li>Impact bullet from CV with numbers.</li>
+              <li>Impact bullet from CV with scope (team/budget/portfolio).</li>
+              <li>Impact bullet from CV about results (cost/time/quality/client).</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="top">
+              <div class="role">Job Title — Company</div>
+              <div class="meta">City • YYYY–YYYY</div>
+            </div>
+            <ul>
+              <li>Impact bullet from CV with numbers.</li>
+              <li>Impact bullet from CV with numbers.</li>
             </ul>
           </article>
         </div>
@@ -121,21 +164,44 @@
 
       <section class="grid" style="margin-top:14px">
         <div class="card" id="education">
-          <h2>Education</h2>
+          <h2>Education & Certifications</h2>
           <div class="list">
             <div class="item">
               <div class="top"><div class="role">Degree — School</div><div class="meta">YYYY</div></div>
-              <p>Optional details.</p>
+              <p>Optional: specialization, honors.</p>
+            </div>
+            <div class="item">
+              <div class="top"><div class="role">Certification — Issuer</div><div class="meta">YYYY</div></div>
+              <p>Optional: credential ID.</p>
             </div>
           </div>
         </div>
 
-        <div class="card" id="contact">
-          <h2>Contact</h2>
-          <div class="chips">
-            <span class="chip"><a href="mailto:you@email.com">you@email.com</a></span>
-            <span class="chip"><a href="#">LinkedIn</a></span>
+        <div class="card" id="projects">
+          <h2>Projects</h2>
+          <div class="list">
+            <div class="item">
+              <div class="top"><div class="role">Project Name</div><div class="meta"><a href="#">Link</a> • YYYY</div></div>
+              <p>Problem → what you did → result. Keep it recruiter-readable.</p>
+              <div class="chips" style="margin-top:10px">
+                <span class="chip">Skill</span><span class="chip">Skill</span><span class="chip">Skill</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="top"><div class="role">Project Name</div><div class="meta">YYYY</div></div>
+              <p>Short description focused on your contribution and outcome.</p>
+            </div>
           </div>
+        </div>
+      </section>
+
+      <section class="card" id="contact" style="margin-top:14px">
+        <h2>Contact</h2>
+        <p>Best way to reach me:</p>
+        <div class="chips" style="margin-top:10px">
+          <span class="chip"><a href="mailto:you@email.com">you@email.com</a></span>
+          <span class="chip"><a href="#">LinkedIn</a></span>
+          <span class="chip">Montréal, QC (open to hybrid/remote)</span>
         </div>
       </section>
 
